@@ -1,0 +1,1920 @@
+body{
+    box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #000000;
+ 
+
+}
+
+
+
+/**************************************
+  HERO SECTION STYLES
+***************************************/
+/**************************************
+  HERO SECTION STYLES
+***************************************/
+/**************************************
+  HERO SECTION STYLES
+***************************************/
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;  /* Full viewport height */
+  overflow: hidden;
+  color: #fff;
+  
+}
+
+/* Background image (grayscale) */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2; /* Sits behind everything */
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%); /* Makes background black & white */
+}
+
+/* Dark overlay to make text more legible */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+@keyframes circleMove {
+  0% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+  25% { transform: rotate(90deg) translateX(30px) rotate(-90deg); }
+  50% { transform: rotate(180deg) translateX(30px) rotate(-180deg); }
+  75% { transform: rotate(270deg) translateX(30px) rotate(-270deg); }
+  100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+}
+
+.cre img {
+  position: absolute;
+  animation: circleMove 3s infinite linear;
+  filter: grayscale(70%) hue-rotate(100deg);
+
+}
+
+@keyframes rotateArrow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.rotatingarrow img {
+  width: 50px; /* Adjust size as needed */
+  height: auto;
+  animation: rotateArrow 2s linear infinite;
+}
+.rotatingarrow img:hover {
+  animation: rotateArrow 1s linear infinite;
+}
+
+
+/* Large watermark text behind main heading */
+.hero-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  transform: translate(-50%, -50%);
+  font-size: 8rem;      /* Adjust size as needed */
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.05);  /* Very faint white */
+  white-space: nowrap;
+  z-index: 0;  /* Behind hero-content but above overlay */
+}
+
+/* Main hero content */
+.hero-content {
+  position: relative;
+  z-index: 1;  /* Above the watermark */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center */
+}
+
+.hero-content h1 {
+  font-size: 3rem;    /* Adjust heading size */
+  color: #ffc107;     /* Gold accent color */
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+/* CTA button */
+.hero-btn {
+  display: inline-block;
+  background: #ffc107;
+  color: #000;
+  padding: 14px 28px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+.hero-btn:hover {
+  background: #ffb300; /* Slightly darker gold */
+}
+
+/* Wave shape in the corner (optional) */
+.wave-shape {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+.wave-shape svg {
+  width: 300px;
+  height: auto;
+  fill: #ffc107; 
+  opacity: 0.9;
+}
+
+/**************************************
+  SHOOTING STAR ANIMATION
+***************************************/
+.shooting-star-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* So it doesn't block clicks */
+  overflow: hidden;
+  z-index: 4; /* Behind the overlay and watermark */
+}
+
+/* Each shooting star is a thin line with a gradient tail */
+.shooting-star {
+  position: absolute;
+  width: 2px;    /* thickness of the star's tail */
+  height: 80px;  /* length of the star's tail */
+  background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+  opacity: 0;
+  transform: rotate(45deg); /* diagonal tail */
+  /* 
+    animation: shoot 4s ease-in-out infinite;
+    You can set your own duration and iteration below:
+  */
+}
+
+/* The "shoot" keyframes move from top-left to bottom-right while fading out */
+@keyframes shoot {
+  0% {
+    transform: translate(-100px, -100px) rotate(45deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(800px, 800px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* 
+   Individual stars: 
+   - Adjust top/left to set where they appear 
+   - Set different animation-duration and delays for variety 
+*/
+.s1 {
+  top: 10%;
+  left: 5%;
+  animation: shoot 6s ease-in-out infinite 2s; /* 6s duration, infinite loops, 2s delay */
+}
+.s2 {
+  top: 25%;
+  left: 0;
+  animation: shoot 5s ease-in-out infinite 4s; /* 5s duration, infinite loops, 4s delay */
+}
+.s3 {
+  top: 40%;
+  left: 10%;
+  animation: shoot 7s ease-in-out infinite 6s;
+}
+.s4 {
+  top: 60%;
+  left: 2%;
+  animation: shoot 9s ease-in-out infinite 1s;
+}
+
+/**************************************
+  RESPONSIVE STYLES
+***************************************/
+@media (max-width: 768px) {
+  .hero-watermark {
+    font-size: 5rem;
+  }
+  .hero-content h1 {
+    font-size: 1rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .wave-shape svg {
+    width: 200px;
+  }
+}
+
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0); /* Start from 0% of the original size */
+    }
+    100% {
+      transform: scale(1); /* End at 100% of the original size */
+    }
+  }
+  .about-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #ffe24f;
+  }
+  .about-section .about-content{
+    padding: 0 66px 0;
+    position: relative;
+    top: 2px;
+    box-sizing: content-box;
+  }
+  .about-section .about-content h2{
+       font-size: 30px;
+}
+  .about-section .about-content h2 span{
+       color: rgb(255, 255, 255);
+}
+  .about-section .about-content p{
+    align-items: flex-start;
+    display: flex;
+    font-size: 18px;
+}
+
+  
+.about-section .img img{
+    height: 419px;
+    /* position: relative; */
+    /* top: 12px; */
+    padding: 35px 154px 6px 0;
+    border-radius: 1px 82px 1px 82px;
+}
+  
+  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .home-hero {
+      height: 50vh;
+      top: 43px;
+    }
+  
+    .hero-content h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* -----------------------------about setion 2------------------- */
+
+  .about-section .Reverse{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #ffe24f;
+  }
+  .about-section.Reverse .about-second1{
+    padding: 0 66px 0;
+    position: relative;
+    top: 2px;
+    box-sizing: content-box;
+  }
+  .about-section .Reverse .about-second1 h2{
+       font-size: 30px;
+}
+  .about-section .Reverse .about-second1 h2 span{
+       color: rgb(255, 255, 255);
+}
+  .about-section.Reverse .about-second1 p{
+    align-items: flex-start;
+    display: flex;
+    font-size: 18px;
+}
+
+  
+.about-section.Reverse .img1 img{
+    height: 419px;
+    /* position: relative; */
+    /* top: 12px; */
+    padding: 35px 99px 6px 90px;
+    border-radius: 1px 82px 231px 82px;
+}
+  
+.about-section .Reverse  .about-content1 h2 span{
+  color: rgb(255, 255, 255);
+}
+.back{
+bottom: 287px;
+    position: absolute;
+    color:  #00000021 ;
+    opacity: 33px;
+    
+    font-size: 54px;}
+
+
+
+    /* -------------------tab---------------------- */
+    /* Container for the entire tab component */
+/* Container for the entire section */
+.apock-section {
+  max-width: 1200px;
+  margin: 83px auto;
+  padding: 40px 20px;
+  
+  background-color: #7d7b81; /* Light purple background, adjust as needed */
+  color: #0f0f0f;
+  text-align: center;
+}
+
+/* Intro text styling */
+.apock-section .intro-text {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* Button group styling */
+.button-group {
+  margin-bottom: 30px;
+}
+
+.button-group button {
+  background-color: transparent;
+  color: #ffeb3b; /* Purple accent, adjust as needed */
+  border: 2px solid #ffeb3b;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #ffeb3b;
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Indicate active button with a different style */
+.active-btn {
+  background-color: #663399;
+  color: #fff;
+}
+
+/* Content container & panels */
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 200px; /* Ensure a bit of height even if text is short */
+}
+
+/* By default, only show the .active panel */
+.panel {
+  display: none;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left; /* So text is left-aligned inside the panel */
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.panel.active {
+  display: flex; /* Show the active panel as a flex container */
+  /* background-image: url(../images/dots.png); */
+}
+#moving-img {
+  width: 50px;
+  height: 50px;
+  background-image: url('../images/dots.png');
+  background-size: cover;
+  position: absolute;
+  top: 100px;
+  left: 100px;}
+
+
+
+/* Panel content layout: text on one side, image on the other */
+.panel-text, .panel-image {
+  flex: 1;
+  min-width: 250px;
+  padding: 10px;
+}
+.panel-text p{
+  margin: 23px 0px;
+  font-weight: 700;
+}
+
+/* Responsive image */
+.panel-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 61px 1px 61px 1px;
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+  .panel {
+    flex-direction: column;
+    text-align: center;
+  }
+  .panel-text, .panel-image {
+    flex: none;
+    width: 100%;
+  }
+  .button-group button {
+    margin: 10px 5px;
+  }
+}
+
+
+/* --------------------- */
+/* Overall section styling */
+/* Consulting Section Base Styles */
+.consulting-section {
+  background-color: #1e1e1e; /* Dark background */
+  color: #ffffff;            /* White text */
+  padding: 60px 20px;
+  position: relative;        /* Needed for absolutely positioned triangles */
+  overflow: hidden;          /* Hide triangles that move out of the container */
+}
+
+/* Triangles container */
+.triangle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;      /* So it doesn't block clicks on content */
+  z-index: 0;                /* Ensures triangles are behind the content */
+}
+
+/* Basic triangle shape & animation */
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid rgba(255, 255, 255, 0.3);
+  animation: float 10s linear infinite;
+}
+
+/* Keyframes for floating triangles (from top to bottom) */
+@keyframes float {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(110vh); /* Moves them fully off the bottom */
+  }
+}
+
+/* Individual triangle customizations */
+.t1 {
+  left: 10%;
+  animation-delay: 0s;
+}
+.t2 {
+  left: 30%;
+  animation-delay: 2s;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 35px solid rgba(255, 255, 255, 0.3);
+}
+.t3 {
+  left: 50%;
+  animation-delay: 4s;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid rgba(255, 255, 255, 0.3);
+}
+.t4 {
+  left: 70%;
+  animation-delay: 6s;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid rgba(255, 255, 255, 0.3);
+}
+.t5 {
+  left: 90%;
+  animation-delay: 8s;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 45px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Consulting content: side-by-side text and image */
+.consulting-content {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  gap: 30px;
+  position: relative; /* So it's above the triangles */
+  z-index: 1;         /* Ensure the content is on top */
+}
+
+/* Text block styling */
+.text-block {
+  flex: 1;
+}
+.text-block h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.text-block p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Image block styling */
+.image-block {
+  flex: 1;
+  text-align: center;
+}
+.image-block img {
+  width: 100%;
+  height: auto;
+  border-radius: 1229px 619px;
+}
+
+/* ------------------------- */
+/* Responsive Styles         */
+/* ------------------------- */
+
+/* For devices with a max-width of 768px (tablets and smaller) */
+@media (max-width: 768px) {
+  .consulting-content {
+    flex-direction: column;
+  }
+  .text-block,
+  .image-block {
+    width: 100%;
+  }
+  /* Optionally reduce padding for smaller screens */
+  .consulting-section {
+    padding: 40px 15px;
+  }
+  .text-block h2 {
+    font-size: 28px;
+  }
+  .text-block p {
+    font-size: 1rem;
+  }
+}
+
+/* For very small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .consulting-section {
+    padding: 30px 10px;
+  }
+  .text-block h2 {
+    font-size: 24px;
+  }
+  .text-block p {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+/* ------------------------------ */
+/* Alternative Section Styling with Background Text */
+/* ============================= */
+/* Base Styles for Alt Consulting Section */
+/* ============================= */
+.alt-consulting-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+  color: #f0f0f0;
+  padding: 80px 20px;
+}
+
+/* Pseudo-element for big background text */
+.alt-consulting-section::before {
+  content: "Web Solutions";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8rem;           /* Adjust size as needed */
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.05); /* Subtle, low opacity */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================= */
+/* Background Shapes */
+/* ============================= */
+.background-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows interaction with content */
+  z-index: -1;
+}
+
+/* Circle Shape & Animation */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: pulse 8s ease-in-out infinite;
+}
+
+/* Keyframes for pulsing circles */
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 0.4; }
+  100% { transform: scale(0.8); opacity: 0.7; }
+}
+
+/* Individual circle positioning and sizes */
+.c1 {
+  width: 150px;
+  height: 150px;
+  top: 10%;
+  left: 15%;
+}
+.c2 {
+  width: 200px;
+  height: 200px;
+  bottom: 20%;
+  right: 10%;
+}
+.c3 {
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 60%;
+}
+
+/* ============================= */
+/* Content Container */
+/* ============================= */
+.alt-content {
+  position: relative;
+  z-index: 1; /* Ensure content sits above the background text */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* Image Block Styling */
+.alt-image-block {
+  flex: 1;
+  text-align: center;
+}
+.alt-image-block img {
+  width: 100%;
+  height: auto;
+  border-radius: 1229px 619px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Text Block Styling */
+.alt-text-block {
+  flex: 1;
+}
+.alt-text-block h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.alt-text-block p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* ============================= */
+/* Responsive Styles */
+/* ============================= */
+
+/* For tablets and devices with a max-width of 768px */
+@media (max-width: 768px) {
+  .alt-content {
+    flex-direction: column;
+  }
+  .alt-image-block,
+  .alt-text-block {
+    width: 100%;
+  }
+  /* Reduce padding */
+  .alt-consulting-section {
+    padding: 60px 15px;
+  }
+  .alt-text-block h2 {
+    font-size: 2rem;
+  }
+  .alt-text-block p {
+    font-size: 1rem;
+  }
+}
+
+/* For very small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .alt-consulting-section {
+    padding: 40px 10px;
+  }
+  .alt-text-block h2 {
+    font-size: 1.8rem;
+  }
+  .alt-text-block p {
+    font-size: 0.9rem;
+  }
+  /* Optionally adjust gap between blocks */
+  .alt-content {
+    gap: 20px;
+  }
+}
+
+/* ------------------- */
+/**************************************
+  SECTION & PATTERN STYLES
+***************************************/
+.partner-verity-section {
+  position: relative;
+  background-color: #111; /* Dark background */
+  color: #fff;
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+/* Optional dotted patterns */
+.pattern {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: url('assets/images/dots.png') repeat;
+  opacity: 0.15;
+  z-index: 1;
+}
+.pattern-1 {
+  top: 20px;
+  left: 20px;
+}
+.pattern-2 {
+  bottom: 40px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+}
+
+/**************************************
+  BUBBLE ANIMATION
+***************************************/
+.bubble-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -40px; /* Start off-screen */
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 170, 255, 0.7); /* Blue color */
+  border-radius: 50%;
+  animation: bubbleFloat 8s linear infinite;
+}
+
+/* Randomize horizontal positions & delays for 15 bubbles */
+.bubble-container .bubble:nth-of-type(1)  { left: 5%;  animation-delay: 0s; }
+.bubble-container .bubble:nth-of-type(2)  { left: 15%; animation-delay: 1s; }
+.bubble-container .bubble:nth-of-type(3)  { left: 25%; animation-delay: 2s; }
+.bubble-container .bubble:nth-of-type(4)  { left: 35%; animation-delay: 3s; }
+.bubble-container .bubble:nth-of-type(5)  { left: 45%; animation-delay: 4s; }
+.bubble-container .bubble:nth-of-type(6)  { left: 55%; animation-delay: 5s; }
+.bubble-container .bubble:nth-of-type(7)  { left: 65%; animation-delay: 6s; }
+.bubble-container .bubble:nth-of-type(8)  { left: 75%; animation-delay: 7s; }
+.bubble-container .bubble:nth-of-type(9)  { left: 85%; animation-delay: 8s; }
+.bubble-container .bubble:nth-of-type(10) { left: 10%; animation-delay: 0.5s; }
+.bubble-container .bubble:nth-of-type(11) { left: 20%; animation-delay: 1.5s; }
+.bubble-container .bubble:nth-of-type(12) { left: 30%; animation-delay: 2.5s; }
+.bubble-container .bubble:nth-of-type(13) { left: 40%; animation-delay: 3.5s; }
+.bubble-container .bubble:nth-of-type(14) { left: 50%; animation-delay: 4.5s; }
+.bubble-container .bubble:nth-of-type(15) { left: 60%; animation-delay: 5.5s; }
+
+/* Keyframes for bubble floating upward, enlarging, and fading out */
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/**************************************
+  CONTENT LAYOUT
+***************************************/
+.partner-content {
+  position: relative;
+  z-index: 2; /* Above bubbles & patterns */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.partner-left {
+  flex: 1;
+  margin-right: 20px;
+}
+.partner-btn {
+  background-color: transparent;
+  color: #ffeb3b;
+  border: 2px solid #444;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  transition: background 0.3s ease;
+}
+.partner-btn:hover {
+  background-color: #ffeb3b;
+  color: #000;
+  text-decoration: underline;
+  border-color: #666;
+}
+.partner-left h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.partner-left h2 span {
+  color: #ffeb3b;
+}
+.tagline {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+/**************************************
+  BENEFITS LIST
+***************************************/
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+/**************************************
+  UPDATED BENEFIT-ITEM STYLE
+***************************************/
+.benefit-item {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 20px;
+  gap: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Initial animation state */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.8s forwards ease-out;
+}
+
+/* Hover effect for a slight pop */
+.benefit-item:hover {
+  transform: translateY(0) scale(1.03);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Keyframe animation remains unchanged */
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.benefit-item:nth-of-type(1) { animation-delay: 0.2s; }
+.benefit-item:nth-of-type(2) { animation-delay: 0.4s; }
+.benefit-item:nth-of-type(3) { animation-delay: 0.6s; }
+.benefit-item:nth-of-type(4) { animation-delay: 0.8s; }
+.icon-container {
+  width: 50px;
+  height: 50px;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.icon-container img {
+  width: 28px;
+  height: 28px;
+}
+.benefit-text h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #fff;
+}
+.benefit-text p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+/**************************************
+  RIGHT SIDE (IMAGE & HASHTAG)
+***************************************/
+.partner-right {
+  position: relative;
+  flex: 0 0 350px;
+}
+.partner-image-wrapper {
+  position: relative;
+  width: 350px;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+}
+.partner-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hashtag {
+  font-size: 1.2rem;
+  background-color: #222;
+  padding: 6px 12px;
+  display: inline-block;
+  border-radius: 4px;
+  color: #fff;
+}
+
+/**************************************
+  FADE & SLIDE UP ANIMATION (for benefit items)
+***************************************/
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**************************************
+  RESPONSIVE STYLES
+***************************************/
+@media (max-width: 900px) {
+  .partner-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .partner-left {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  .partner-right {
+    flex: none;
+    width: 100%;
+  }
+  .partner-image-wrapper {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 600px) {
+  .partner-left h2 {
+    font-size: 1.8rem;
+  }
+  .benefit-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .icon-container {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+}
+
+
+
+/* -------------------------------------------------------------------------------------- */
+     /* Reset and base styles */
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      
+      color: #000000;
+      overflow-x: hidden;
+      
+    }
+    /* Main container */
+    .section-container {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 80px auto;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      overflow: hidden;
+      z-index: 1;
+    }
+    /* Text and image areas */
+    .text-area, .image-area {
+      padding: 40px;
+      flex: 1 1 50%;
+      position: relative;
+      z-index: 2;
+    }
+    .text-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .text-area h2 {
+      /* font-size: 2.5rem; */
+      margin-bottom: 20px;
+      color: #ffeb3b;
+    }
+    .text-area ul {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .text-area li {
+      margin-bottom: 20px;
+      padding-left: 30px;
+      position: relative;
+    }
+    .text-area li:before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      color: #ffeb3b;
+      font-size: 1.2rem;
+    }
+    .text-area li p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .cta a {
+      color: #ffeb3b;
+      text-decoration: none;
+      border: 2px solid #ffeb3b;
+      padding: 10px 20px;
+      position: relative;
+    top: 21px;position: relative;
+    top: 21px;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+    .cta a:hover {
+      background: #ffeb3b;
+      color: #000000;
+      text-decoration: underline;
+    }
+    .image-area {
+      background: url('../images/8.jpg') no-repeat center center/cover;
+      min-height: 300px;
+    }
+    /* Floating bubbles background */
+    .bubbles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .bubble {
+      position: absolute;
+      bottom: -150px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: floatBubble linear infinite;
+    }
+    @keyframes floatBubble {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1);
+        opacity: 0;
+      }
+    }
+    /* Create variety with nth-child */
+    .bubble:nth-child(1) {
+      width: 40px;
+      height: 40px;
+      left: 10%;
+      animation-duration: 10s;
+      animation-delay: 0s;
+    }
+    .bubble:nth-child(2) {
+      width: 20px;
+      height: 20px;
+      left: 20%;
+      animation-duration: 12s;
+      animation-delay: 2s;
+    }
+    .bubble:nth-child(3) {
+      width: 50px;
+      height: 50px;
+      left: 70%;
+      animation-duration: 14s;
+      animation-delay: 4s;
+    }
+    .bubble:nth-child(4) {
+      width: 30px;
+      height: 30px;
+      left: 80%;
+      animation-duration: 9s;
+      animation-delay: 1s;
+    }
+    .bubble:nth-child(5) {
+      width: 25px;
+      height: 25px;
+      left: 40%;
+      animation-duration: 11s;
+      animation-delay: 3s;
+    }
+    .bubble:nth-child(6) {
+      width: 35px;
+      height: 35px;
+      left: 55%;
+      animation-duration: 13s;
+      animation-delay: 0.5s;
+    }
+    .bubble:nth-child(7) {
+      width: 45px;
+      height: 45px;
+      left: 5%;
+      animation-duration: 15s;
+      animation-delay: 2.5s;
+    }
+    .bubble:nth-child(8) {
+      width: 30px;
+      height: 30px;
+      left: 85%;
+      animation-duration: 10s;
+      animation-delay: 1.5s;
+    }
+    .bubble:nth-child(9) {
+      width: 20px;
+      height: 20px;
+      left: 60%;
+      animation-duration: 12s;
+      animation-delay: 0.2s;
+    }
+    .bubble:nth-child(10) {
+      width: 40px;
+      height: 40px;
+      left: 35%;
+      animation-duration: 16s;
+      animation-delay: 3.5s;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .section-container {
+        flex-direction: column;
+      }
+      .text-area, .image-area {
+        flex: 1 1 100%;
+      }
+    }
+
+
+
+
+
+    /* ---------------------------------------------------------------------- */
+    
+
+    /* Closing Section Container */
+    .closing-section {
+      position: relative;
+      width: 100%;
+      min-height: 450px;
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      /* Example gradient background */
+      background: linear-gradient(193deg, #0fa2c9 0%, #0038ff 100%);
+      margin-top: 50px; /* Space above the last section */
+    }
+
+    /* Circles Container */
+    .circles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1; /* Behind text, but in front of the background */
+    }
+    .circles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 25px;
+      height: 25px;
+      background: rgba(255, 255, 255, 0.2);
+      bottom: -100px;
+      border-radius: 50%;
+      animation: floatUp 20s linear infinite;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-900px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Example positions/sizes for multiple circles */
+    .circles li:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+    .circles li:nth-child(2) {
+      left: 10%;
+      width: 30px;
+      height: 30px;
+      animation-delay: 2s;
+      animation-duration: 15s;
+    }
+    .circles li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+    .circles li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 12s;
+    }
+    .circles li:nth-child(5) {
+      left: 55%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 1s;
+    }
+    .circles li:nth-child(6) {
+      left: 85%;
+      width: 100px;
+      height: 100px;
+      animation-delay: 3s;
+    }
+    .circles li:nth-child(7) {
+      left: 35%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 7s;
+      animation-duration: 25s;
+    }
+    .circles li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 10s;
+      animation-duration: 25s;
+    }
+    .circles li:nth-child(9) {
+      left: 15%;
+      width: 40px;
+      height: 40px;
+      animation-delay: 2s;
+      animation-duration: 18s;
+    }
+    .circles li:nth-child(10) {
+      left: 75%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 0s;
+      animation-duration: 20s;
+    }
+
+    /* Content Wrapper */
+    .closing-content {
+      position: relative;
+      z-index: 2; /* Above the circles */
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Text Area */
+    .closing-text {
+      flex: 1 1 50%;
+      padding-right: 20px;
+    }
+    .closing-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    .closing-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: #f2f2f2;
+    }
+    .closing-text a {
+      display: inline-block;
+      /* background: transparent; */
+      color: #ffeb3b;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #ffeb3b;
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: 0.3s ease;
+      margin-top: 10px;
+    }
+    .closing-text a:hover {
+      background: #ffeb3b;
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    /* Image Area */
+    .closing-image {
+      flex: 1 1 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 300px;
+      margin-top: 20px;
+    }
+    .closing-image img {
+      
+        width: 100%;
+        max-width: 500px;
+        position: relative;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        right: 10px;
+    
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .closing-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .closing-text, .closing-image {
+        flex: 1 1 100%;
+        padding-right: 0;
+      }
+      .closing-image {
+        margin-top: 30px;
+      }
+      .closing-text h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+
+    /* ------------------loader-------------------- */
+    /* Preloader Overlay */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #343e41, #0cb185);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+    /* Fade out effect */
+    #preloader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Preloader Content Container */
+    .preloader-content {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+      z-index: 1000000;
+    }
+
+    /* Spinner Animation (Ring) */
+    .spinner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 150px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-top: 5px solid #fff;
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+    }
+    @keyframes spin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Logo with Pulse Animation */
+    .logo {
+      position: relative;
+    width: 100px;
+    position: relative;
+    animation: pulse 0.5s infinite;
+    z-index: 1;
+    align-items: center;
+    left: 3px;
+    }
+    /* @keyframes pulse {
+      0%   { transform: scale(1); opacity: 1; }
+      50%  { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    } */
+
+    /* Main Content */
+    .content {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      padding: 40px;
+      text-align: center;
+    }
+    .content.visible {
+      opacity: 1;
+    }
+
+
+
+  /* --------------------------back to top-------------------------------- */
+  .content {
+    height: 2000px;
+    background: linear-gradient(#fff, #ddd);
+    padding: 20px;
+  }
+
+  /* Back to Top Button Styles */
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #ffeb3b;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    z-index: 1000;
+    transition: opacity 0.3s, visibility 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+  }
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .back-to-top:hover {
+    background-color: #000000;
+  }
+
+
+  /* ----------------------------------dark mood ------------------------------- */
+  /* Basic Page Styling for Demo */
+body {
+  margin: 0;
+  
+  transition: background-color 0.3s, color 0.3s;
+  color: #f8f4f4;
+  
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+  background-color: #111111;
+  color: #ffffff;
+}
+body.dark-mode .apock-section{
+  background-color: #354f6d;
+  color: #000000;
+}
+body.dark-mode .consulting-section{
+  background-color: #354f6d;
+  color: #ffffff;
+}
+body.dark-mode .alt-consulting-section{
+  background-color: #005ec9;
+  color: #ffffff;
+}
+body.dark-mode .partner-verity-section{
+  background-color: #005ec9;
+  color: #ffffff;
+}
+body.dark-mode .section-container{
+  background-color: #005ec9;
+  color: #ffffff;
+}
+body.dark-mode .actagram-background g .stroke{
+  background-color: #005ec9;
+  color: #ffffff;
+}
+body.dark-mode .wsfullmain .clearfix{
+  background-color: #005ec9;
+  color: #ffffff;
+}
+
+
+/* Toggle Container Positioned on the Right */
+.theme-toggle-container {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+/* Hide the default checkbox */
+#theme-toggle-checkbox {
+  display: none;
+}
+
+/* Toggle Switch (vertical rectangle) */
+.theme-toggle {
+  display: inline-block;
+  width: 50px;
+  height: 150px;
+  background: #2e2e2e; /* Switch background color */
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Circle Handle */
+.toggle-handle {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: #ffd659; /* Light mode color (sun-like) */
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Icons inside the circle */
+.toggle-handle img {
+  width: 20px;
+  height: 20px;
+  display: none; /* We'll show/hide via checkbox state */
+}
+
+.sun-icon {
+  display: block; /* Sun icon is shown by default */
+}
+
+/* Move the handle down (for dark mode) & switch icons */
+#theme-toggle-checkbox:checked ~ .theme-toggle .toggle-handle {
+  top: 100px;
+  background: #ffffff; /* Dark mode handle color */
+}
+
+/* Show moon icon, hide sun icon */
+#theme-toggle-checkbox:checked ~ .theme-toggle .toggle-handle .moon-icon {
+  display: block;
+}
+#theme-toggle-checkbox:checked ~ .theme-toggle .toggle-handle .sun-icon {
+  display: none;
+}
+@media (max-width: 767px) {
+  .theme-toggle-container {
+    display: none;
+  }
+}
+/* -----------------------animaction aca */
+/* Promo Section Container */
+.promo-section {
+  position: relative;
+  /* Give the section some height or padding to show content */
+  padding: 60px 20px;
+  text-align: center;
+  /* You can set a fixed height if desired, but padding is more flexible */
+  /* height: 400px; */
+}
+
+/* Actagram Background Container */
+.actagram-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* ensures it sits behind .promo-content */
+  overflow: hidden;
+  background: #111; /* fallback background color */
+}
+
+/* The Rotating SVG */
+.rotating-shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;  /* Adjust as needed */
+  height: 600px; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  animation: rotateActagram 20s linear infinite;
+}
+
+/* Rotate the shape 360 degrees continuously */
+@keyframes rotateActagram {
+  0%   { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Promo Content Styling */
+.promo-content {
+  max-width: 800px;  /* limit content width */
+  margin: 0 auto;
+  color: #fff;       /* white text on dark background */
+}
+
+.promo-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.promo-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* CTA Button */
+.promo-button {
+  display: inline-block;
+  background-color: transparent; /* orange button */
+  color: #ffeb3b;
+  padding: 15px 30px;
+  border: 2px solid #ffeb3b;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.promo-button:hover {
+  background-color: #ffeb3b;
+  text-decoration: underline;
+  color: #000;
+}
+
+
+
+/* ----------------------footer----------------------------- */
+/* ---------Footer----------- */
+/* Footer Styling */
+.footer {
+  background: #222;
+  color: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+
+.footer-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin: 10px 0;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #d0ff00;
+  text-decoration: underline;
+}
+
+/* Footer Logo */
+.footer-logo {
+  width: 198px;
+  margin-top: 10px;
+    filter: invert(100%) sepia(78%) saturate(1211%)hue-rotate(190deg) brightness(107%) contrast(106%)
+  ;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* Social Icons */
+.social-icons a {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #d9ff00;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
+  background: linear-gradient(135deg, #202020, #7d7b81);
+  color: #FFD700;
+ 
+  text-align: center;
+  padding: 15px;
+  display: flex;
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.5s ease-in-out;
+}
+.cookie-banner p {
+  margin: 0;
+  font-size: 21px;
+  
+  line-height: 1.5;
+}
+.cookie-banner a {
+  color: #FFD700;
+  text-decoration: none;
+  font-weight: bold;
+}
+.cookie-banner button {
+  background: transparent;
+  /* border: 7px solid #585858; */
+  border-radius: 2px solid black;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+.cookie-banner button:hover {
+  background: #FFD700;
+  text-decoration: underline;
+  color: black;
+  
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
