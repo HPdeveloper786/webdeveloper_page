@@ -1503,16 +1503,17 @@ bottom: 287px;
       position: relative;
     width: 100px;
     position: relative;
-    animation: pulse 0.5s infinite;
+    /* animation: pulse 0.5s infinite; */
     z-index: 1;
+    margin: 22px 0px;
     align-items: center;
     left: 3px;
     }
-    /* @keyframes pulse {
+    @keyframes pulse {
       0%   { transform: scale(1); opacity: 1; }
       50%  { transform: scale(1.1); opacity: 0.8; }
       100% { transform: scale(1); opacity: 1; }
-    } */
+    }
 
     /* Main Content */
     .content {
@@ -1578,33 +1579,66 @@ body.dark-mode {
   color: #ffffff;
 }
 body.dark-mode .apock-section{
-  background-color: #354f6d;
+  background-color: #c7c7c7;
   color: #000000;
 }
 body.dark-mode .consulting-section{
-  background-color: #354f6d;
+  background-color: #c7c7c7;
   color: #ffffff;
 }
 body.dark-mode .alt-consulting-section{
-  background-color: #005ec9;
+  background-color: #c7c7c7;
   color: #ffffff;
 }
 body.dark-mode .partner-verity-section{
-  background-color: #005ec9;
-  color: #ffffff;
+  background-color: #c7c7c7;
+  color: #000000;
 }
+body.dark-mode .benefits-list h3{
+  
+  color: #000000;
+}
+body.dark-mode .benefits-list p{
+  
+  color: #000000;
+}
+body.dark-mode .benefit-item:hover {
+  
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+body.dark-mode .text-block h2 {
+  color: black;
+  }
+body.dark-mode .text-area p {
+  color: black;
+  }
+body.dark-mode .text-area .cta a {
+  color: black;
+  }
+body.dark-mode .text-block p {
+  color: black;
+  }
 body.dark-mode .section-container{
-  background-color: #005ec9;
+  background-color: #c7c7c7;
   color: #ffffff;
 }
 body.dark-mode .actagram-background g .stroke{
-  background-color: #005ec9;
+  background-color: #c7c7c7;
   color: #ffffff;
 }
-body.dark-mode .wsfullmain .clearfix{
-  background-color: #005ec9;
+body.dark-mode .navbar{
+  background-color: #c7c7c7;
   color: #ffffff;
 }
+body.dark-mode .logo2{
+  filter: invert(0) sepia(0) saturate(0) hue-rotate(0deg) brightness(0%) contrast(100%);
+
+}
+body.dark-mode #wstoggle span{
+  filter: invert(0) sepia(0) saturate(0) hue-rotate(0deg) brightness(0%) contrast(100%);
+
+}
+
 
 
 /* Toggle Container Positioned on the Right */
@@ -1632,7 +1666,25 @@ body.dark-mode .wsfullmain .clearfix{
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
-
+/* max with of  hero section */
+@media (max-width: 767px) {
+  .hero-section {
+    height: 395px;
+  }
+  .hero-content h1{
+    font-size: 33px;
+  }
+  .hero-content p{
+    font-size: 20px;
+  }
+  .wave-shape{
+    display: none;
+  }
+  .hero-content a{
+    background: black;
+    color: white;
+  }
+}
 /* Circle Handle */
 .toggle-handle {
   position: absolute;
