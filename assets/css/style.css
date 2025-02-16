@@ -1557,9 +1557,11 @@ bottom: 287px;
   .back-to-top.show {
     opacity: 1;
     visibility: visible;
+    color: black;
   }
   .back-to-top:hover {
     background-color: #000000;
+    color: white;
   }
 
 
